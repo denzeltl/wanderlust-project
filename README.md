@@ -6,7 +6,7 @@ The focus of this project is to practice getting APIs from a server.
 
 View project [here](http://denzeltl.github.io/wanderlust-project)
 
-**Completed on:** _05/19/2020_
+**Completed on:** _06/02/2020_
 
 ---
 
