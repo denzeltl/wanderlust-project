@@ -25,20 +25,35 @@ const getVenues = async () => {
         const response = await fetch(urlToFetch);
         if (response.ok) {
             const jsonResponse = await response.json();
-            console.log(jsonResponse);
+            const venues = jsonResponse.response.groups[0].items.map((item) => item.venue);
+            return venues;
         }
     } catch (error) {
         console.log(error);
     }
 };
 
-const getForecast = () => {};
+const getForecast = async () => {
+    const urlToFetch = `${weatherUrl}?&q=${$input.val()}&APPID=${openWeatherKey}`;
+
+    try {
+        const response = await fetch(urlToFetch);
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            return jsonResponse;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 // Render functions
 const renderVenues = (venues) => {
     $venueDivs.forEach(($venue, index) => {
         // Add your code here:
-
+        const venue = venues[index];
+        const venueIcon = venue.categories[0].icon;
+        const venueImgSrc = `${venueIcon.prefix}bg_64${venueIcon.suffix}`;
         let venueContent = '';
         $venue.append(venueContent);
     });
